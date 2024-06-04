@@ -2,13 +2,13 @@ cmake_minimum_required(VERSION 3.28)
 project(hash)
 
 set(CMAKE_CXX_STANDARD 11)
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -I%OPENSSL_ROOT_DIR%/include -L%OPENSSL_ROOT_DIR%/lib")
 
 find_package(OpenSSL REQUIRED)
 
-include_directories(${CMAKE_CURRENT_SOURCE_DIR}/include ${OPENSSL_INCLUDE_DIR})
-
-# hash
 add_library(${PROJECT_NAME} SHARED src/hash.cpp)
-target_link_directories(${PROJECT_NAME} INTERFACE ${OPENSSL_LIBRARIES})
-target_link_libraries(${PROJECT_NAME} ssl crypto)
+
+target_include_directories(${PROJECT_NAME} PUBLIC
+        ${CMAKE_CURRENT_SOURCE_DIR}/include INTERFACE ${OPENSSL_INCLUDE_DIR})
+
+target_link_options(${PROJECT_NAME} PRIVATE -L${OPENSSL_SSL_LIBRARY} -L${OPENSSL_CRYPTO_LIBRARY})
+target_link_libraries(${PROJECT_NAME} PRIVATE OpenSSL::SSL OpenSSL::Crypto)
