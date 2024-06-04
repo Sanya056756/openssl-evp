@@ -15,7 +15,7 @@ FetchContent_Declare(
     GIT_TAG master
 )
 
-FetchContent_MakeAvailable(openssl_evp)
+FetchContent_MakeAvailable(openssl-evp)
 
 ...
 
