@@ -1,5 +1,7 @@
 # OpenSSL-EVP Helper
 
+[![CodeFactor](https://www.codefactor.io/repository/github/sanya056756/openssl-evp/badge)](https://www.codefactor.io/repository/github/sanya056756/openssl-evp)
+
 OpenSSL-EVP Helper is a C++ library that makes it easier to work with EVP in the [OpenSSL](https://github.com/openssl/openssl) library.
 
 ## Installation
